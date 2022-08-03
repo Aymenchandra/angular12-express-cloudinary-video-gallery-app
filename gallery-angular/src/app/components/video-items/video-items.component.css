@@ -1,0 +1,10 @@
+.feedbackbtn
+{
+    background-color:#00FA9A;
+    opacity:.7;
+    border:none;
+}
+.feedbackbtn:hover
+{
+    background-color: lightgray;
+}

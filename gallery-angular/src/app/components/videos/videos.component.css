@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  }
+
+.title{
+    color:rgb(48, 45, 45);
+    font-weight: 500;
+    font-size: large;
+}  
+
+.content{
+    color:rgb(100, 98, 98);
+    font-weight: 500;
+    font-size: medium;
+}
+.icon{
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    margin-left:10px ;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+

@@ -1,0 +1,58 @@
+<!-- 
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Url Video</th>
+            <th>Actions</th>
+            <th><button pButton type="button" label="Add" class="p-button-outlined" style="height: 2rem;" routerLink="/add"></button></th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let video of videos">
+            <td>{{video.title}}</td>
+            <td>{{video.description}}</td>
+            <td>{{video.source}}</td>
+            <td>
+                <i class="pi pi-pencil cursor-pointer" style="font-size: 1.5rem; color:green" ></i>
+                <i class="pi pi-trash ml-6 cursor-pointer" style="font-size: 1.5rem; color:red;" ></i>
+            </td>
+            <td></td>
+        </tr>  
+    </tbody>
+</table> -->
+
+<div class="container">
+  <button mat-raised-button color="warn" class="my-3" routerLink="/add">+Add</button>
+
+  <table mat-table [dataSource]="videos" class="mat-elevation-z8">
+    
+    <!-- title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef class="title"> Title </th>
+      <td mat-cell *matCellDef="let video" class="content"> {{video.title}} </td>
+    </ng-container>
+    
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="title">Description </th>
+      <td mat-cell *matCellDef="let video" class="content"> {{video.description}} </td>
+    </ng-container>
+    
+    <!-- Source Column -->
+    <ng-container matColumnDef="source">
+      <th mat-header-cell *matHeaderCellDef class="title">Video </th>
+      <td mat-cell *matCellDef="let video" class="content" > <a href="{{video.source}}" target="_blank"><i class="material-icons" >videocam</i></a></td>
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="title">Actions </th>
+      <td mat-cell *matCellDef="let video" class="content"><i class="pi pi-pencil icon" style="background-color:green" routerLink="/modif/{{video._id}}"></i> <i class="pi pi-trash icon" style="background-color:red" (click)="delete(video._id)"></i> </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

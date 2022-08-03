@@ -1,0 +1,79 @@
+<div class="col-md-12">
+    <div>
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        class="mx-6 mt-6"
+      >
+        <div class="form-group mt-3">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            [(ngModel)]="form.title"
+            required
+            minlength="3"
+            maxlength="20"
+            #title="ngModel"
+            [ngClass]="{ 'is-invalid': title.errors && f.submitted }" />
+            <div *ngIf="f.submitted && title.errors && title.errors.required" class="invalid-feedback">
+                Veuillez saisir votre title
+            </div>  
+            
+        </div>
+        <div class="form-group  mt-3">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="form.description"
+            required
+            description
+            #description="ngModel"
+            [ngClass]="{ 'is-invalid': description.errors && f.submitted }" />
+            <div *ngIf="f.submitted && description.errors && description.errors.required" class="invalid-feedback">
+                Veuillez saisir votre description
+            </div>  
+        </div>
+        <div class="form-group  mt-3">
+          <label for="description">source</label>
+          <input
+            type="text"
+            class="form-control"
+            name="source"
+            [(ngModel)]="form.source"
+            required
+            source
+            #source="ngModel"
+            [ngClass]="{ 'is-invalid': source.errors && f.submitted }" />
+            <div *ngIf="f.submitted && source.errors && source.errors.required" class="invalid-feedback">
+                Veuillez saisir votre source
+            </div>  
+        </div>
+        <div class="form-group  mt-3">
+          <label for="video">Video</label>
+          <input class="form-control"
+          type="file" 
+          accept="video/mp4,video/x-m4v,video/*" 
+          (change)="onFileSelected($event)"
+
+          >  
+        </div>
+        
+        <div class="form-group mt-3">
+          <button class="btn btn-primary btn-block">Update</button>
+        </div>
+  
+        
+      </form>
+  
+      <div class="alert alert-success mt-6" *ngIf="isSuccessful">
+        Updated successfully !
+      </div>
+    </div>
+  </div>

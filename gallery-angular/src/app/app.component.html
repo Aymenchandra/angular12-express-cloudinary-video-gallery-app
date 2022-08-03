@@ -1,0 +1,26 @@
+<mat-sidenav-container style="background-color: rgba(128, 128, 128, 0.012); ">
+  <mat-sidenav mode="side" [(opened)]="opened" style="width: 15em;">
+    <button mat-button class="toggle" >MENU<mat-icon >menu</mat-icon></button>
+    <button mat-button class="sub-title" routerLink="/gallery"><i class="material-icons" >image</i>Gallery</button>
+    <button mat-button class="sub-title" routerLink="/videos"><i class="material-icons" >video_file</i>Videos List</button>
+
+    
+  </mat-sidenav>
+  <mat-sidenav-content style="padding-left: 1rem;" style="height:100vh">
+
+    <mat-toolbar  style="background-color: black; color:white">
+      <span>Application</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>logout</mat-icon>
+      </button>
+      
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+      <!-- <button mat-button *ngIf="!opened" (click)="opened=!opened" style="color: grey;" style="position: absolute;left:0; height:100%;width:0.1%;"></button> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <router-outlet></router-outlet> -->
+

@@ -1,0 +1,13 @@
+<h1>Video Player MP4</h1>
+<div class="grid container">
+    <app-video-items
+    class="col-12 md:col-6 lg:col-4"
+    *ngFor="let v of videos"
+    [video]="v"
+    (onDeleteComment)="DeleteComment(v)"
+    (onUpdateComment)="UpdateComment(v)"
+    >
+    </app-video-items>
+</div>
+
+

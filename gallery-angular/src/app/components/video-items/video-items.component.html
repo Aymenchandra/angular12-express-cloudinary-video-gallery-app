@@ -1,0 +1,68 @@
+
+    <p-card  [style]="{width: '100%'}" styleClass="p-card-shadow" >
+      <ng-template pTemplate="header">
+        <h3 class="pl-3 pt-2">{{video.title}}</h3>
+        <vg-player>
+          <vg-overlay-play></vg-overlay-play>
+          <vg-buffering></vg-buffering>
+          <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+          </vg-scrub-bar>
+          <vg-controls>
+            <vg-play-pause></vg-play-pause>
+            <vg-playback-button></vg-playback-button>
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>        
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+            <vg-fullscreen></vg-fullscreen>
+          </vg-controls>
+          <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin>
+            <source [src]="video.source" type="video/mp4">
+          </video>
+        </vg-player>
+        <div class="mx-3 mt-3">
+          <div style="color:black;font-weight:600;">Description:</div> {{video.description}}
+        </div>
+      </ng-template>
+      <span class="p-buttonset">
+        <button class="border-round feedbackbtn"pButton type="button" label="FeedBack" icon="pi pi-plus" (click)="showFeedback()" ></button>
+      </span>
+      <ng-template pTemplate="footer" >
+        <div *ngIf="show">
+          <div *ngIf="!video.state">
+            <textarea rows="5" cols="30" pInputTextarea [autoResize]="autoResize" [(ngModel)]="comment">{{video.comment}}</textarea><br>
+            <button *ngIf="comment" class="border-round bg-green-700" pButton type="button" label="Send" (click)="AddComment(video)"></button>
+          </div>
+          <div *ngIf="video.state">
+            <p-panel header=" Comment" [toggleable]="false">
+              <ng-template pTemplate="icons" >
+                <button
+                  pButton
+                  class="p-panel-header-icon p-link"
+                  icon="pi pi-pencil"
+                  (click)="updateComment(video)"
+                ></button>
+                <button
+                  pButton
+                  class="p-panel-header-icon p-link"
+                  icon="pi pi-times"
+                  (click)="deleteComment(video)"
+                ></button>
+                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+              </ng-template>
+              <p style="width:18rem">
+                {{video.comment}}
+              </p>
+            </p-panel>
+          </div>
+        </div>
+      </ng-template>
+    </p-card>
+
+
+    
+
+
