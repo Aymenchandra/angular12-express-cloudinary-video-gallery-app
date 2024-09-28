@@ -21,27 +21,24 @@ export class AjoutVideoComponent implements OnInit {
   isFailed = false;
   errorMessage = '';
 
-  form2 = new form2()
-  arrayform : any[] = [];
+  arrayform: any[] = [];
   value: number = 0;
   files: File[] = [];
 
   constructor(
     private _uploadService: UploadvideoService,
-    private Videoservice: VideoService  
-    ) { }
+    private Videoservice: VideoService
+  ) { }
 
-    
-  ngOnInit(): void {
-    
-  }
+
+  ngOnInit(): void { }
 
   onSubmit(): void {
-    if(this.files.length == 0){
+    if (this.files.length == 0) {
       this.isFailed = true;
       this.errorMessage = "Please select your video";
     }
-    else{
+    else {
       this.isFailed = false;
 
       const data = new FormData();
@@ -54,8 +51,8 @@ export class AjoutVideoComponent implements OnInit {
           this.Inprogress = false;
           this.form.source = response.url
           console.log(response)
-          this.Videoservice.addvideo(this.form).subscribe((res)=>{
-            if(res){
+          this.Videoservice.addvideo(this.form).subscribe((res) => {
+            if (res) {
               this.isSuccessful = true;
             }
           })
@@ -66,36 +63,28 @@ export class AjoutVideoComponent implements OnInit {
           this.errorMessage = "Something wrong while adding video";
         }
       });
+    }
+
   }
-  
-}
-addform(){
-    this.form2 = new form2()
-    this.arrayform.push(this.form2)
-}
-removeform(position:any){
-    this.arrayform.splice(position,1)
-}
-progressbar(){
-  this.value = 0
-  this.Inprogress = true;
-  setInterval(()=>{
-    this.value = this.value + Math.floor(Math.random() * 10) + 1;
+
+  progressbar() {
+    this.value = 0
+    this.Inprogress = true;
+    setInterval(() => {
+      this.value = this.value + Math.floor(Math.random() * 10) + 1;
       if (this.value >= 99) {
-          this.value = 99;
+        this.value = 99;
       }
-  }, 1000);
-}
-// file methode
-onFileSelected(event:any){
-  console.log(event);
-  this.files.push(...event.addedFiles);
-}
+    }, 1000);
+  }
+  // file methode
+  onFileSelected(event: any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
 
-onRemove(event:any) {
-  console.log(event);
-  this.files.splice(this.files.indexOf(event), 1);
-}
-
-
+  onRemove(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 }

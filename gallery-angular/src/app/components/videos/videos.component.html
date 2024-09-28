@@ -1,29 +1,4 @@
-<!-- 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Url Video</th>
-            <th>Actions</th>
-            <th><button pButton type="button" label="Add" class="p-button-outlined" style="height: 2rem;" routerLink="/add"></button></th>
-        </tr>
-    </thead>
-    <tbody >
-        <tr *ngFor="let video of videos">
-            <td>{{video.title}}</td>
-            <td>{{video.description}}</td>
-            <td>{{video.source}}</td>
-            <td>
-                <i class="pi pi-pencil cursor-pointer" style="font-size: 1.5rem; color:green" ></i>
-                <i class="pi pi-trash ml-6 cursor-pointer" style="font-size: 1.5rem; color:red;" ></i>
-            </td>
-            <td></td>
-        </tr>  
-    </tbody>
-</table> -->
-
-<div class="container">
+<div class="mx-3">
   <button mat-raised-button color="warn" class="my-3" routerLink="/add">+Add</button>
 
   <table mat-table [dataSource]="videos" class="mat-elevation-z8">

@@ -8,7 +8,7 @@ import { video } from 'src/app/_models/video';
 })
 export class VideoService {
 
-  private apiUrl="http://localhost:8080"
+  private apiUrl="http://localhost:8081"
   constructor(private http:HttpClient) { }
   //get all videos service 
   addvideo(data:any):Observable<video[]>{

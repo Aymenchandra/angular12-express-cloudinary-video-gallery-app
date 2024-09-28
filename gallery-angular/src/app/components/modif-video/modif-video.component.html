@@ -41,7 +41,7 @@
             </div>  
         </div>
         <div class="form-group  mt-3">
-          <label for="description">source</label>
+          <label for="source">source (existing url)</label>
           <input
             type="text"
             class="form-control"
@@ -50,13 +50,13 @@
             required
             source
             #source="ngModel"
-            [ngClass]="{ 'is-invalid': source.errors && f.submitted }" />
+            [ngClass]="{ 'is-invalid': source.errors && f.submitted }" disabled />
             <div *ngIf="f.submitted && source.errors && source.errors.required" class="invalid-feedback">
                 Veuillez saisir votre source
             </div>  
         </div>
         <div class="form-group  mt-3">
-          <label for="video">Video</label>
+          <label for="video">Video (New URL)</label>
           <input class="form-control"
           type="file" 
           accept="video/mp4,video/x-m4v,video/*" 

@@ -1,104 +1,50 @@
 <div class="col-md-12">
-    <div>
-      <!-- Main form -->
-      <div class="form-group mt-3" *ngIf="!isSuccessful">
-        <button class="btn btn-primary " (click)="addform()">+ More forms</button>
-      </div>
-      <form
-        *ngIf="!isSuccessful"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-        class="mx-6 mt-6"
-      >
-        <div class="form-group mt-3">
-          <label for="title">Title</label>
-          <input
-            type="text"
-            class="form-control"
-            name="title"
-            [(ngModel)]="form.title"
-            required
-            minlength="3"
-            maxlength="20"
-            #title="ngModel"
-            [ngClass]="{ 'is-invalid': title.errors && f.submitted }" />
-            <div *ngIf="f.submitted && title.errors && title.errors.required" class="invalid-feedback">
-                Veuillez saisir votre title
-            </div>  
-            
-        </div>
-        <div class="form-group  mt-3">
-          <label for="description">Description</label>
-          <input
-            type="text"
-            class="form-control"
-            name="description"
-            [(ngModel)]="form.description"
-            required
-            description
-            #description="ngModel"
-            [ngClass]="{ 'is-invalid': description.errors && f.submitted }" />
-            <div *ngIf="f.submitted && description.errors && description.errors.required" class="invalid-feedback">
-                Veuillez saisir votre description
-            </div>  
-        </div>
-        
-        
-        <ngx-dropzone (change)="onFileSelected($event)" accept="video/mp4,video/x-m4v,video/*" >
-          <ngx-dropzone-label>Drop your video!</ngx-dropzone-label>
-          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-preview>
-        </ngx-dropzone>
-
-        <div style="color:red" *ngIf="isFailed">
-          <br />{{ errorMessage }}
-          </div>
-        <div class="card">
-            <p-progressBar [value]="value" *ngIf="Inprogress"></p-progressBar>
-        </div>
-        <div class="form-group mt-3">
-          <button class="btn btn-primary btn-block">Add</button>
-        </div>
-      </form>
-      <!-- To expand more forms -->
-      
-      <form
-        name="form2"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-        class="mx-6 mt-6"
-        *ngFor="let line of arrayform; let i=index"
-      >
+  <div>
+    <!-- Main form -->
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate
+      class="mx-6 mt-6">
       <div class="form-group mt-3">
-        <button class="btn btn-danger " (click)="removeform(i)">Remove</button>
-      </div>
-        <div class="form-group mt-3">
-          <label for="title">Title{{i+1}}</label>
-          <input
-            type="text"
-            class="form-control"
-            name="title{{i}}"
-            /> 
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" [(ngModel)]="form.title" required minlength="3"
+          maxlength="20" #title="ngModel" [ngClass]="{ 'is-invalid': title.errors && f.submitted }" />
+        <div *ngIf="f.submitted && title.errors && title.errors.required" class="invalid-feedback">
+          Veuillez saisir votre title
         </div>
-        <div class="form-group  mt-3">
-          <label for="description">Description{{i+1}}</label>
-          <input
-            type="text"
-            class="form-control"
-            name="description{{i}}"
-            />
+
+      </div>
+      <div class="form-group  mt-3">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="form.description" required description
+          #description="ngModel" [ngClass]="{ 'is-invalid': description.errors && f.submitted }" />
+        <div *ngIf="f.submitted && description.errors && description.errors.required" class="invalid-feedback">
+          Veuillez saisir votre description
         </div>
-        
-      </form>
-      <div class="alert alert-success mt-6" *ngIf="Inprogress">
-        Wait until your video is uploaded!
       </div>
-      <div class="alert alert-success mt-6" *ngIf="isSuccessful">
-        Your video is successful!
+
+
+      <ngx-dropzone (change)="onFileSelected($event)" accept="video/mp4,video/x-m4v,video/*">
+        <ngx-dropzone-label>Drop your video!</ngx-dropzone-label>
+        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      </ngx-dropzone>
+
+      <div style="color:red" *ngIf="isFailed">
+        <br />{{ errorMessage }}
       </div>
+      <div class="card">
+        <p-progressBar [value]="value" *ngIf="Inprogress"></p-progressBar>
+      </div>
+      <div class="form-group mt-3">
+        <button mat-raised-button color="primary" class="my-3">+ Add</button>
+      </div>
+    </form>
+
+    <div class="alert alert-success mt-6" *ngIf="Inprogress">
+      Wait until your video is uploaded!
+    </div>
+    <div class="alert alert-success mt-6" *ngIf="isSuccessful">
+      Your video is successful!
     </div>
   </div>
+</div>
